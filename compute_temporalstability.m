@@ -1,6 +1,6 @@
 function [median_ICCs,excellent_stability_times,good_stability_times,moderate_stability_times] = compute_temporalstability(data_array,num_perms,epoch_length)
 
-%PURPOSE:           Compute temporal stability per each combination of region & frequency (ICC as a function of data length)
+%PURPOSE:           Compute temporal stability per each combination of region & frequency (ICC as a function of data length) as in: Wiesman AI, da Silva Castanheira J, Baillet S. (2021). Stability of spectral estimates in resting-state magnetoencephalography: recommendations for minimal data duration with neuroanatomical specificity.
 %
 %REQUIRED INPUTS:   data_array: 4-D array of data to be tested, with dimensions [region x frequency x participant x epoch]
 %                   num_perms: the number of random permutations of the epoch order
@@ -14,6 +14,9 @@ function [median_ICCs,excellent_stability_times,good_stability_times,moderate_st
 %
 %AUTHOR:            Alex I. Wiesman, neuroSPEED lab, Montreal Neurological Institute
 %VERSION HISTORY:   08/05/2021  v1: First working version of program
+%
+%LICENSE:           This software is distributed under the terms of the GNU General Public License as published by the Free Software Foundation. Further details on the GPLv3 license can be found at http://www.gnu.org/copyleft/gpl.html.
+%                   FOR RESEARCH PURPOSES ONLY. THE SOFTWARE IS PROVIDED "AS IS," AND THE AUTHORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
 
 for k = 1:num_perms %for each permutation, randomly shuffle data_array epoch order (dimension 4) then compute ICCs over data averaged across all possible independent epoch numbers from 1 to nepochs/2
     
